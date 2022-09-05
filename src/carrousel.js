@@ -45,7 +45,8 @@ export default function carrousel(list) {
   const container = document.createElement('div');
   container.classList.add('carrousel-track-container');
   const ul = createImageList(list);
-  content.appendChild(ul);
+  container.appendChild(ul);
+  content.appendChild(container);
 
   // Create the right button
   const bRight = document.createElement('button');

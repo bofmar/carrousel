@@ -17,6 +17,18 @@ function createImageList(list) {
   return ul;
 }
 
+function createNav(size) {
+  const nav = document.createElement('div');
+  nav.classList.add('carrousel-nav');
+  for (let i = 0; i < size; i += 1) {
+    const button = document.createElement('button');
+    button.classList.add('carrousel-indicator');
+    nav.appendChild(button);
+  }
+
+  return nav;
+}
+
 export default function carrousel(list) {
   const content = document.createElement('div');
   content.classList.add('carrousel');
@@ -42,6 +54,10 @@ export default function carrousel(list) {
   rArrow.src = arrow;
   bRight.appendChild(rArrow);
   content.appendChild(bRight);
+
+  // Create the carrousel nav
+  const cNav = createNav(list.length);
+  content.appendChild(cNav);
 
   return content;
 }

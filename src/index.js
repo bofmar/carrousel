@@ -76,6 +76,22 @@ function activate() {
       updateDots(currentDot, targetDot);
     });
   });
+
+  function autoSlide() {
+    const currentImage = track.querySelector('.current-image');
+    const nextImage = currentImage.nextElementSibling || images[0];
+
+    slideImage(currentImage, nextImage, track);
+
+    const currentDot = document.querySelector('.active');
+    const nextDot = currentDot.nextElementSibling || indicators[0];
+
+    updateDots(currentDot, nextDot);
+
+    setTimeout(autoSlide, 5000);
+  }
+
+  autoSlide();
 }
 
 const body = document.querySelector('body');

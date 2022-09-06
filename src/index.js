@@ -38,6 +38,13 @@ function activate() {
 
     slideImage(currentImage, nextImage, track);
   });
+
+  bLeft.addEventListener('click', () => {
+    const currentImage = track.querySelector('.current-image');
+    const previousImage = currentImage.previousElementSibling;
+
+    slideImage(currentImage, previousImage, track);
+  });
 }
 
 const body = document.querySelector('body');

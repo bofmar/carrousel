@@ -45,6 +45,7 @@ export default function carrousel(list) {
   const container = document.createElement('div');
   container.classList.add('carrousel-track-container');
   const ul = createImageList(list);
+  ul.firstElementChild.classList.add('current-image');
   container.appendChild(ul);
   content.appendChild(container);
 
@@ -58,6 +59,7 @@ export default function carrousel(list) {
 
   // Create the carrousel nav
   const cNav = createNav(list.length);
+  cNav.firstElementChild.classList.add('active');
   content.appendChild(cNav);
 
   return content;

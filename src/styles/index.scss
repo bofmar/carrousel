@@ -8,12 +8,16 @@
     background-color: teal;
     height: 100%;
     position: relative;
+    overflow: hidden;
   }
 
   .carrousel-track{
     padding: 0;
     margin: 0;
     list-style: none;
+    position: relative;
+    height: 100%;
+    transition: transform 150ms ease-in-out;
     
     & > li {
       position: absolute;

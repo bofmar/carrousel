@@ -10,8 +10,16 @@ const images = [p1, p2, p3, p4];
 function arangeInRow(images, size) {
   images.forEach((image, index) => {
     image.style.left = `${size * index}px`;
-    console.log(image.style.left);
   });
+}
+
+function slideImage(currentImage, targetImage, track) {
+  const amountToMove = targetImage.style.left;
+  
+  track.style.transform = `translateX(-${amountToMove})`;
+
+  currentImage.classList.remove('current-image');
+  targetImage.classList.add('current-image');
 }
 
 function activate() {
@@ -23,9 +31,12 @@ function activate() {
   const indicators = content.querySelectorAll('.carrousel-indicator');
   const width = images[0].getBoundingClientRect().width;
   
-  arangeInRow(images,width);
-  bLeft.addEventListener('click', () => {
-    console.log("yo");
+  arangeInRow(images, width);
+  bRight.addEventListener('click', () => {
+    const currentImage = track.querySelector('.current-image');
+    const nextImage = currentImage.nextElementSibling;
+
+    slideImage(currentImage, nextImage, track);
   });
 }
 

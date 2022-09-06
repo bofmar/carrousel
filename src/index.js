@@ -22,6 +22,11 @@ function slideImage(currentImage, targetImage, track) {
   targetImage.classList.add('current-image');
 }
 
+function updateDots(currentDot, targetDot) {
+  currentDot.classList.remove('active');
+  targetDot.classList.add('active');
+}
+
 function activate() {
   const content = document.querySelector('.carrousel');
   const bLeft = content.querySelector('.left-button');
@@ -37,6 +42,11 @@ function activate() {
     const nextImage = currentImage.nextElementSibling;
 
     slideImage(currentImage, nextImage, track);
+
+    const currentDot = document.querySelector('.active');
+    const nextDot = currentDot.nextElementSibling;
+
+    updateDots(currentDot, nextDot);
   });
 
   bLeft.addEventListener('click', () => {
@@ -44,6 +54,27 @@ function activate() {
     const previousImage = currentImage.previousElementSibling;
 
     slideImage(currentImage, previousImage, track);
+
+    const currentDot = document.querySelector('.active');
+    const previousDot = currentDot.previousElementSibling;
+
+    updateDots(currentDot, previousDot);
+  });
+
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', (e) => {
+      if (e.target.classList.contains('active')) return;
+
+      const currentDot = document.querySelector('.active');
+      const targetDot = e.target;
+
+      const currentImage = track.querySelector('.current-image');
+      const targetImage = images[index];
+
+      slideImage(currentImage, targetImage, track);
+
+      updateDots(currentDot, targetDot);
+    });
   });
 }
 

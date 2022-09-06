@@ -39,24 +39,24 @@ function activate() {
   arangeInRow(images, width);
   bRight.addEventListener('click', () => {
     const currentImage = track.querySelector('.current-image');
-    const nextImage = currentImage.nextElementSibling;
+    const nextImage = currentImage.nextElementSibling || images[0];
 
     slideImage(currentImage, nextImage, track);
 
     const currentDot = document.querySelector('.active');
-    const nextDot = currentDot.nextElementSibling;
+    const nextDot = currentDot.nextElementSibling || indicators[0];
 
     updateDots(currentDot, nextDot);
   });
 
   bLeft.addEventListener('click', () => {
     const currentImage = track.querySelector('.current-image');
-    const previousImage = currentImage.previousElementSibling;
+    const previousImage = currentImage.previousElementSibling || images[images.length - 1];
 
     slideImage(currentImage, previousImage, track);
 
     const currentDot = document.querySelector('.active');
-    const previousDot = currentDot.previousElementSibling;
+    const previousDot = currentDot.previousElementSibling || indicators[indicators.length - 1];
 
     updateDots(currentDot, previousDot);
   });
